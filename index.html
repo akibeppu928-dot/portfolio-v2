@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="物流現場11年の経験 × Claude Code。現場で本当に使える業務効率化ツール・Webサイトを作る、平石彰彦のポートフォリオ。">
+<title>平石彰彦 | 物流×AI開発</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap');
+
+  :root{
+    --bg:#0B1A14;
+    --bg-2:#0F2219;
+    --card:#132A20;
+    --green:#2FBF8A;
+    --green-deep:#1F5E46;
+    --gold:#D3B789;
+    --gold-strong:#E8C888;
+    --text:#F2F5F1;
+    --text-soft:#A9BDB2;
+    --line:rgba(211,183,137,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.85;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+  .serif{font-family:'Shippori Mincho',serif}
+  section{padding:96px 0;position:relative}
+
+  /* progress bar */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--green),var(--gold-strong));z-index:100}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:90;transition:background .3s,backdrop-filter .3s,border-color .3s;border-bottom:1px solid transparent}
+  nav.scrolled{background:rgba(11,26,20,.82);backdrop-filter:blur(10px);border-color:var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:.04em;text-decoration:none}
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:26px;list-style:none;font-size:13px}
+  .nav-links a{text-decoration:none;color:var(--text-soft);transition:color .2s;position:relative}
+  .nav-links a:hover,.nav-links a.active{color:var(--text)}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold)}
+
+  /* hero */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden}
+  #net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,transparent 0,var(--bg) 78%);z-index:0;pointer-events:none}
+  .hero-inner{position:relative;z-index:1;display:flex;align-items:center;gap:56px}
+  .hero-text{flex:1.5;min-width:0}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;color:var(--gold);font-weight:700;border:1px solid var(--line);padding:6px 14px;border-radius:999px;margin-bottom:22px;background:rgba(19,42,32,.6)}
+  .tag i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(47,191,138,.7);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(47,191,138,0)}100%{box-shadow:0 0 0 0 rgba(47,191,138,0)}}
+  .hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(32px,5.4vw,58px);line-height:1.3;font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--green),var(--gold-strong));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .typing{font-family:'Inter','Zen Kaku Gothic New',sans-serif;font-size:clamp(15px,2vw,19px);color:var(--gold-strong);min-height:1.9em;margin-bottom:14px}
+  .typing .caret{display:inline-block;width:2px;height:1.1em;background:var(--gold-strong);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lede{color:var(--text-soft);max-width:520px;font-size:15px;margin-bottom:30px}
+  .btns{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 26px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;will-change:transform}
+  .btn.primary{background:linear-gradient(100deg,var(--green),#5fd9ac);color:#06241a;box-shadow:0 10px 30px rgba(47,191,138,.28)}
+  .btn.primary:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(47,191,138,.4)}
+  .btn.ghost{border:1px solid var(--line);color:var(--text)}
+  .btn.ghost:hover{background:rgba(211,183,137,.1);transform:translateY(-3px)}
+  .hero-photo{flex:0 0 auto;position:relative}
+  .ring{position:relative;width:240px;height:240px;border-radius:50%;padding:6px;background:conic-gradient(from 0deg,var(--green),var(--gold-strong),var(--green));animation:spin 9s linear infinite}
+  .ring-in{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg);animation:spin 9s linear infinite reverse}
+  .ring-in img{width:100%;height:100%;object-fit:cover;display:block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:1;font-size:11px;letter-spacing:.3em;color:var(--text-soft);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-hint::after{content:"";width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:drop 1.8s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* marquee */
+  .marquee{border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:16px 0}
+  .track{display:flex;gap:48px;width:max-content;animation:marq 32s linear infinite;font-family:'Inter','Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;color:var(--text-soft)}
+  .track span::before{content:"◆";color:var(--gold);margin-right:48px;font-size:9px;vertical-align:2px}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* headings */
+  .eyebrow{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.28em;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .title{font-family:'Shippori Mincho',serif;font-size:clamp(26px,4vw,38px);line-height:1.45;font-weight:800;margin-bottom:14px}
+  .sub{color:var(--text-soft);max-width:620px;font-size:15px;margin-bottom:44px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 20px;text-align:center}
+  .stat .n{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,50px);line-height:1.1;background:linear-gradient(100deg,var(--green),var(--gold-strong));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .n small{font-size:.45em;margin-left:2px}
+  .stat .l{font-size:12.5px;color:var(--text-soft);margin-top:8px}
+
+  /* cards */
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;transform-style:preserve-3d;will-change:transform}
+  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(47,191,138,.14),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+  .card:hover{border-color:rgba(47,191,138,.6);box-shadow:0 22px 44px rgba(0,0,0,.38)}
+  .card:hover::before{opacity:1}
+  .card .ic{font-size:30px;margin-bottom:14px;display:block}
+  .card h3{font-family:'Shippori Mincho',serif;font-size:19px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--text-soft)}
+  .card .num{position:absolute;right:20px;top:12px;font-family:'Inter',sans-serif;font-weight:800;font-size:46px;color:rgba(211,183,137,.1)}
+
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s;position:relative}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 22px;position:relative}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:'Inter',sans-serif;font-weight:800;color:var(--gold);font-size:13px;letter-spacing:.2em;display:block;margin-bottom:10px}
+  .step h3{font-size:16px;margin-bottom:6px}
+  .step p{font-size:13px;color:var(--text-soft)}
+  .step:not(:last-child)::after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:var(--gold);z-index:2;font-size:15px}
+
+  /* works */
+  .work{display:flex;flex-direction:column;gap:12px}
+  .work .badge{align-self:flex-start;font-size:11px;font-weight:700;color:var(--green);border:1px solid rgba(47,191,138,.5);padding:3px 11px;border-radius:999px;letter-spacing:.06em}
+  .card > a.link{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--gold-strong);text-decoration:none}
+  .card > a.link:hover{text-decoration:underline}
+  #work-web{scroll-margin-top:90px}
+  .work a.link{margin-top:auto;font-size:13px;font-weight:700;color:var(--gold-strong);text-decoration:none}
+  .work a.link:hover{text-decoration:underline}
+
+  /* cta */
+  .cta{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(47,191,138,.18),transparent 65%),var(--bg-2);border-top:1px solid var(--line)}
+  .cta .title{margin-inline:auto}
+  .cta .sub{margin-inline:auto}
+  .cta .btns{justify-content:center}
+  footer{text-align:center;padding:26px 0;font-size:11.5px;color:var(--text-soft);background:var(--bg-2)}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  .rv.in{opacity:1;transform:none}
+  .no-js .rv{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    section{padding:70px 0}
+    .nav-links{display:none}
+    .hero-inner{flex-direction:column-reverse;align-items:flex-start;gap:30px}
+    .ring{width:150px;height:150px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .g2,.g3{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr}
+    .step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}
+    .scroll-hint{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body class="no-js">
+<div id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">AKIHIKO<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#flow">Flow</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="tag"><i></i>OPEN FOR WORK</div>
+      <h1>物流現場11年 ×<br><em>Claude Code</em>で、<br>現場に効くツールを。</h1>
+      <p class="typing" aria-live="off"><span id="typed"></span><span class="caret"></span></p>
+      <p class="lede">営業・労務管理・ネットショップ運営・物流と、通算33年の現場を経験。「どこで手間とミスが生まれるか」を知っているから、使われるツールを作れます。</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">相談してみる →</a>
+        <a class="btn ghost" href="#works">実績を見る</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ring"><div class="ring-in"><img src="profile.jpg" alt="平石彰彦"></div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>LOGISTICS × AI</span><span>CLAUDE CODE</span><span>GOOGLE APPS SCRIPT</span><span>業務自動化</span><span>在庫・発注・出荷管理</span><span>LANDING PAGE</span>
+    <span>LOGISTICS × AI</span><span>CLAUDE CODE</span><span>GOOGLE APPS SCRIPT</span><span>業務自動化</span><span>在庫・発注・出荷管理</span><span>LANDING PAGE</span>
+  </div>
+</div>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow rv">01 — ABOUT</div>
+      <h2 class="title rv">現場を知る人間が、AIで作る。</h2>
+      <p class="sub rv">食品容器卸売業の物流部門で11年。日々の業務の中で感じてきた「ここ、自動化できたら…」を、AI駆動開発で形にしています。</p>
+
+      <div class="stats rv">
+        <div class="stat"><div class="n"><span class="count" data-to="11">0</span><small>年</small></div><div class="l">物流現場の経験</div></div>
+        <div class="stat"><div class="n"><span class="count" data-to="33">0</span><small>年</small></div><div class="l">社会人経験</div></div>
+        <div class="stat"><div class="n"><span class="count" data-to="15">0</span><small>件</small></div><div class="l">クラウドワークス契約</div></div>
+        <div class="stat"><div class="n"><span class="count" data-to="5" data-dec="1">0</span><small>/5</small></div><div class="l">全項目満点の評価</div></div>
+      </div>
+
+      <div class="grid g2" style="margin-top:22px">
+        <article class="card rv"><span class="num">01</span><span class="ic">🏭</span><h3>物流現場を11年知っている</h3><p>「何が面倒で、どこでミスが起きるか」を現場目線で理解。机上の空論ではない提案ができます。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="num">02</span><span class="ic">💬</span><h3>非エンジニアにも伝わる言葉</h3><p>専門用語を並べず、「何ができて、どう楽になるのか」を中心にご説明します。</p></article>
+        <article class="card rv"><span class="num">03</span><span class="ic">🧭</span><h3>33年のビジネス経験</h3><p>営業4年・労務管理13年・ネットショップ運営5年・物流11年。ビジネス全体の流れを踏まえて相談に乗れます。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="num">04</span><span class="ic">⏱️</span><h3>納期と連絡の速さ</h3><p>契約15件、評価5.0(全項目満点)。約束を守り、進捗をこまめに共有します。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="eyebrow rv">02 — SKILLS</div>
+      <h2 class="title rv">できること。</h2>
+      <p class="sub rv">小さく始めて、確実に動くものをお渡しします。</p>
+      <div class="grid g3">
+        <article class="card rv"><span class="ic">📊</span><h3>業務の自動化</h3><p>Googleスプレッドシート／Google Apps Scriptで、集計・転記・リスト作成などの繰り返し作業を自動化します。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="ic">📦</span><h3>物流向け簡易ツール</h3><p>在庫・発注・出荷管理など、現場で使う小規模ツールをヒアリングから設計します。</p></article>
+        <article class="card rv" style="--d:.2s"><span class="ic">🌐</span><h3>Webサイト・LP制作</h3><p>Claude Codeでランディングページやプロフィールサイトを制作し、GitHub＋Vercelで公開まで対応します。</p><a class="link" href="#work-web">制作物を見る →</a></article>
+      </div>
+      <article class="card rv" style="margin-top:20px">
+        <span class="ic">🛡️</span><h3>AIの使い方</h3>
+        <p>Claudeを日常的に使っています。AIの出力はそのまま納品せず、必ず動作確認と内容の検証をしてからお渡しします。APIキーなどの情報管理にも注意して進めます。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="wrap">
+      <div class="eyebrow rv">03 — FLOW</div>
+      <h2 class="title rv">お仕事の進め方。</h2>
+      <p class="sub rv">はじめての方でも安心して進められるよう、流れをシンプルにしています。</p>
+      <div class="flow">
+        <div class="step rv"><h3>ヒアリング</h3><p>課題とゴールを丁寧にうかがいます。</p></div>
+        <div class="step rv" style="--d:.08s"><h3>ご提案</h3><p>やること・範囲・納期をわかりやすく提示します。</p></div>
+        <div class="step rv" style="--d:.16s"><h3>制作・共有</h3><p>進捗をこまめに共有し、方向のズレを防ぎます。</p></div>
+        <div class="step rv" style="--d:.24s"><h3>検証・納品</h3><p>動作確認のうえお渡しし、使い方もご説明します。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" style="background:var(--bg-2)">
+    <div class="wrap">
+      <div class="eyebrow rv">04 — WORKS</div>
+      <h2 class="title rv">制作・実績。</h2>
+      <p class="sub rv">現在は実績づくりの段階です。自分で開発したアプリや制作物ができ次第、ここに追加していきます。</p>
+      <div class="grid g2">
+        <article class="card work rv" id="work-web"><span class="badge">WEB</span><h3>このポートフォリオサイト</h3><p>Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="eyebrow rv">05 — CONTACT</div>
+      <h2 class="title rv">まずは、お困りごとを<br>聞かせてください。</h2>
+      <p class="sub rv">「これ、自動化できる？」くらいのご相談で大丈夫です。クラウドワークスのメッセージからお気軽にどうぞ。</p>
+      <div class="btns rv">
+        <a class="btn primary" href="https://crowdworks.jp/public/employees/6892842" target="_blank" rel="noopener">クラウドワークスで相談する →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Akihiko Hiraishi</footer>
+
+<script>
+(function(){
+  document.body.classList.remove('no-js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* progress bar + nav */
+  var bar = document.getElementById('progress'), nav = document.getElementById('nav');
+  function onScroll(){
+    var h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    nav.classList.toggle('scrolled', h.scrollTop > 30);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* active nav link */
+  var links = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var secs = links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){ if(s) spy.observe(s); });
+
+  /* reveal on scroll */
+  var rv = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rv.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){ rv.observe(el); });
+
+  /* count up */
+  function countUp(el){
+    var to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0;
+    if(reduce){ el.textContent = to.toFixed(dec); return; }
+    var t0 = null, dur = 1400;
+    function tick(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (to * e).toFixed(dec);
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var co = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); co.unobserve(e.target);} });
+  },{threshold:.6});
+  document.querySelectorAll('.count').forEach(function(el){ co.observe(el); });
+
+  /* typing */
+  var words = ['業務自動化ツール','在庫・発注・出荷の管理','ランディングページ','現場の「面倒」を減らす仕組み'];
+  var out = document.getElementById('typed');
+  if(reduce){ out.textContent = words[0]; }
+  else {
+    var wi = 0, ci = 0, del = false;
+    (function type(){
+      var w = words[wi];
+      out.textContent = w.slice(0, ci);
+      if(!del && ci < w.length){ ci++; setTimeout(type, 90); }
+      else if(!del){ del = true; setTimeout(type, 1500); }
+      else if(ci > 0){ ci--; setTimeout(type, 45); }
+      else { del = false; wi = (wi + 1) % words.length; setTimeout(type, 300); }
+    })();
+  }
+
+  /* card spotlight + tilt */
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
+      if(!reduce && e.pointerType === 'mouse'){
+        var rx = ((y / r.height) - .5) * -6, ry = ((x / r.width) - .5) * 6;
+        c.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-4px)';
+      }
+    });
+    c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+  });
+
+  /* magnetic buttons */
+  if(!reduce){
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('pointermove', function(e){
+        if(e.pointerType !== 'mouse') return;
+        var r = b.getBoundingClientRect();
+        b.style.transform = 'translate(' + ((e.clientX - r.left - r.width/2) * .15) + 'px,' + ((e.clientY - r.top - r.height/2) * .25 - 3) + 'px)';
+      });
+      b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+    });
+  }
+
+  /* hero network: nodes = 拠点, lines = 配送ルート */
+  var cv = document.getElementById('net'), cx = cv.getContext('2d');
+  var W, H, nodes = [], mouse = {x:-999, y:-999}, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = W * dpr; cv.height = H * dpr;
+    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round(Math.min(70, W * H / 15000));
+    nodes = [];
+    for(var i = 0; i < n; i++){
+      nodes.push({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35});
+    }
+  }
+  var pulses = [];
+  function frame(){
+    cx.clearRect(0, 0, W, H);
+    var i, j, a, b, d;
+    for(i = 0; i < nodes.length; i++){
+      a = nodes[i];
+      if(!reduce){
+        a.x += a.vx; a.y += a.vy;
+        if(a.x < 0 || a.x > W) a.vx *= -1;
+        if(a.y < 0 || a.y > H) a.vy *= -1;
+        var mx = a.x - mouse.x, my = a.y - mouse.y, md = Math.sqrt(mx*mx + my*my);
+        if(md < 120){ a.x += mx / md * 1.2; a.y += my / md * 1.2; }
+      }
+      for(j = i + 1; j < nodes.length; j++){
+        b = nodes[j];
+        d = Math.hypot(a.x - b.x, a.y - b.y);
+        if(d < 140){
+          cx.strokeStyle = 'rgba(47,191,138,' + (0.34 * (1 - d / 140)) + ')';
+          cx.lineWidth = 1;
+          cx.beginPath(); cx.moveTo(a.x, a.y); cx.lineTo(b.x, b.y); cx.stroke();
+          if(!reduce && pulses.length < 14 && Math.random() < .0009) pulses.push({a:a, b:b, t:0});
+        }
+      }
+      cx.fillStyle = 'rgba(211,183,137,.85)';
+      cx.beginPath(); cx.arc(a.x, a.y, 2.2, 0, 6.283); cx.fill();
+    }
+    /* 荷物が拠点間を移動する光点 */
+    for(i = pulses.length - 1; i >= 0; i--){
+      var p = pulses[i]; p.t += .012;
+      if(p.t >= 1){ pulses.splice(i, 1); continue; }
+      var px = p.a.x + (p.b.x - p.a.x) * p.t, py = p.a.y + (p.b.y - p.a.y) * p.t;
+      cx.fillStyle = 'rgba(232,200,136,.95)';
+      cx.shadowColor = 'rgba(232,200,136,.9)'; cx.shadowBlur = 10;
+      cx.beginPath(); cx.arc(px, py, 3, 0, 6.283); cx.fill();
+      cx.shadowBlur = 0;
+    }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  resize(); frame();
+  window.addEventListener('resize', function(){ resize(); if(reduce) frame(); });
+  cv.parentNode.addEventListener('pointermove', function(e){
+    var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+  });
+  cv.parentNode.addEventListener('pointerleave', function(){ mouse.x = mouse.y = -999; });
+})();
+</script>
+</body>
+</html>
