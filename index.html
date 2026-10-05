@@ -281,6 +281,7 @@
       <p class="sub rv">現在は実績づくりの段階です。自分で開発したアプリや制作物ができ次第、ここに追加していきます。</p>
       <div class="grid g2">
         <article class="card work rv" id="work-web"><span class="badge">WEB</span><h3>このポートフォリオサイト</h3><p>Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
+        <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
       </div>
     </div>
   </section>
@@ -502,6 +503,8 @@
   tg.addEventListener('click', function(){ toggle(!box.classList.contains('open')); });
   document.getElementById('cb-close').addEventListener('click', function(){ toggle(false); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.classList.contains('open')) toggle(false); });
+  var oc = document.getElementById('open-cb');
+  if(oc) oc.addEventListener('click', function(e){ e.preventDefault(); toggle(true); });
   form.addEventListener('submit', function(e){
     e.preventDefault(); var v = input.value.trim(); if(!v) return;
     input.value = ''; ask(v);
