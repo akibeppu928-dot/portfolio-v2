@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="物流現場11年の経験 × Claude Code。現場で本当に使える業務効率化ツール・Webサイトを作る、平石彰彦のポートフォリオ。">
-<title>平石彰彦 | 物流×AI開発</title>
+<meta name="description" content="物流現場11年の経験 × Claude Code。現場で本当に使える業務効率化ツール・Webサイトを作る、あきのポートフォリオ。">
+<title>あき | 物流×AI開発</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap');
 
@@ -182,7 +182,7 @@
 
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="logo">AKIHIKO<span>.</span></a>
+    <a href="#top" class="logo">AKI<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -207,7 +207,7 @@
       </div>
     </div>
     <div class="hero-photo">
-      <div class="ring"><div class="ring-in"><img src="profile.jpg" alt="平石彰彦"></div></div>
+      <div class="ring"><div class="ring-in"><img src="profile.jpg" alt="あき"></div></div>
     </div>
   </div>
   <div class="scroll-hint">SCROLL</div>
@@ -281,7 +281,8 @@
       <p class="sub rv">現在は実績づくりの段階です。自分で開発したアプリや制作物ができ次第、ここに追加していきます。</p>
       <div class="grid g2">
         <article class="card work rv" id="work-web"><span class="badge">WEB</span><h3>このポートフォリオサイト</h3><p>Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
-        <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
+        <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(直前の話題と会話履歴を覚えていて、「それは?」のような続きの質問にも対応します。AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
+        <article class="card work rv" style="--d:.2s"><span class="badge">WEB</span><h3>食品容器卸売店のHPサンプル(架空)</h3><p>飲食店向けの食品容器を扱う架空の会社を題材に制作したサンプルです。写真のスライドショー、1文字ずつ浮かび上がるキャッチコピー、スクロールで動くアニメーション、商品の詳細ページ、見積もりボタン、お問い合わせフォーム(入力チェック付き)、スマホ対応を備えています。写真はUnsplashのフリー素材です。Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://sample-hp-youki.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
       </div>
     </div>
   </section>
@@ -298,7 +299,7 @@
   </section>
 </main>
 
-<footer>© 2026 Akihiko Hiraishi</footer>
+<footer>© 2026 Aki</footer>
 
 <script>
 (function(){
@@ -476,26 +477,43 @@
   var box = document.getElementById('cb'), tg = document.getElementById('cb-toggle'),
       log = document.getElementById('cb-log'), chips = document.getElementById('cb-chips'),
       form = document.getElementById('cb-form'), input = document.getElementById('cb-input');
-  function add(t, who, html){
+  var KEY = 'cb-hist', hist = [], last = -1;
+  function save(){ try{ sessionStorage.setItem(KEY, JSON.stringify({h:hist, l:last})); }catch(e){} }
+  function render(t, who, html){
     var d = document.createElement('div'); d.className = 'cb-m ' + who;
     if(html) d.innerHTML = t; else d.textContent = t;
     log.appendChild(d); log.scrollTop = log.scrollHeight;
   }
+  function add(t, who, html){ render(t, who, html); hist.push({t:t, w:who, h:!!html}); save(); }
+  var FOLLOW = ['それ','これ','その','さっき','先ほど','詳し','もっと','具体','他には','ほかには','続き','なぜ','どうして'];
+  function isFollow(t){ return FOLLOW.some(function(w){ return t.indexOf(w) > -1; }); }
   function answer(text){
-    var t = text.toLowerCase(), best = null, score = 0;
-    FAQ.forEach(function(f){
+    var t = text.toLowerCase(), best = null, score = 0, bi = -1;
+    FAQ.forEach(function(f, i){
       var n = 0; f.k.forEach(function(w){ if(t.indexOf(w) > -1) n++; });
-      if(n > score){ score = n; best = f; }
+      if(n > score){ score = n; best = f; bi = i; }
     });
-    add(best ? best.a : FALLBACK, 'bot', true);
+    if(best){ last = bi; add(best.a, 'bot', true); return; }
+    if(last > -1 && isFollow(t)){
+      add('「' + FAQ[last].q + '」の件ですね。このページに載せている内容は先ほどの回答までです。具体的な内容は、状況をうかがったうえで個別にお答えします。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>', 'bot', true);
+      return;
+    }
+    add(FALLBACK, 'bot', true);
   }
   function ask(text){ add(text, 'me'); answer(text); }
-  FAQ.forEach(function(f){
+  FAQ.forEach(function(f, i){
     var b = document.createElement('button'); b.type = 'button'; b.className = 'cb-chip'; b.textContent = f.q;
-    b.addEventListener('click', function(){ add(f.q, 'me'); add(f.a, 'bot', true); });
+    b.addEventListener('click', function(){ add(f.q, 'me'); last = i; add(f.a, 'bot', true); });
     chips.appendChild(b);
   });
-  add('こんにちは。平石のポートフォリオへようこそ。下のボタンから選ぶか、質問を入力してください。', 'bot');
+  try{
+    var sv = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    if(sv && sv.h && sv.h.length){
+      sv.h.forEach(function(m){ render(m.t, m.w, m.h); hist.push(m); });
+      last = typeof sv.l === 'number' ? sv.l : -1;
+    }
+  }catch(e){}
+  if(!hist.length) add('こんにちは。あきのポートフォリオへようこそ。下のボタンから選ぶか、質問を入力してください。', 'bot');
   function toggle(open){
     box.classList.toggle('open', open); tg.setAttribute('aria-expanded', open);
     if(open) input.focus(); else tg.focus();
