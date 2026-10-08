@@ -174,7 +174,8 @@
   #cb-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
   #cb-form input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:999px;color:var(--text);padding:10px 16px;font:inherit;font-size:16px}
   #cb-form button{width:44px;height:44px;border-radius:50%;border:0;background:var(--green);color:#06241a;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
-  @media(max-width:520px){#cb{right:16px;bottom:84px;height:calc(100vh - 110px)}}
+  @media(max-width:520px){#cb{right:16px;bottom:84px;height:calc(100vh - 110px)}.hero h1{font-size:min(32px,7.6vw)}}
+  @media(max-width:860px){footer{padding-bottom:96px}}
 </style>
 </head>
 <body class="no-js">
@@ -238,7 +239,7 @@
         <article class="card rv"><span class="num">01</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4v15z"/><path d="M2 20h20"/><path d="M8 17h2M14 17h2"/></svg></span><h3>物流現場を11年知っている</h3><p>「何が面倒で、どこでミスが起きるか」を現場目線で理解。机上の空論ではない提案ができます。</p></article>
         <article class="card rv" style="--d:.1s"><span class="num">02</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><h3>非エンジニアにも伝わる言葉</h3><p>専門用語を並べず、「何ができて、どう楽になるのか」を中心にご説明します。</p></article>
         <article class="card rv"><span class="num">03</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><h3>33年のビジネス経験</h3><p>営業4年・労務管理13年・ネットショップ運営5年・物流11年。ビジネス全体の流れを踏まえて相談に乗れます。</p></article>
-        <article class="card rv" style="--d:.1s"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><h3>納期と連絡の速さ</h3><p>契約15件、評価5.0(全項目満点)。約束を守り、進捗をこまめに共有します。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><h3>こまめな連絡</h3><p>契約15件、評価5.0(全項目満点)。進捗をこまめに共有し、24時間以内にお返事します。</p></article>
       </div>
     </div>
   </section>
@@ -278,7 +279,7 @@
     <div class="wrap">
       <div class="eyebrow rv">04 — WORKS</div>
       <h2 class="title rv">制作・実績。</h2>
-      <p class="sub rv">自分で開発したアプリや制作物ができ次第、ここに追加していきます。</p>
+      <p class="sub rv">実際に触って確認できる制作物です。新しいものができしだい追加していきます。</p>
       <div class="grid g2">
         <article class="card work rv" id="work-web"><span class="badge">WEB</span><h3>このポートフォリオサイト</h3><p>Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
         <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(直前の話題と会話履歴を覚えていて、「それは?」のような続きの質問にも対応します。AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
@@ -466,14 +467,16 @@
 (function(){
   var CW = 'https://crowdworks.jp/public/employees/6892842';
   var FAQ = [
-    {q:'何を頼めますか?', k:['頼め','できる','依頼','対応','サービス','スキル'], a:'次の3つが中心です。\n・業務の自動化(受注CSV・Excelデータの集計やリスト作成。ブラウザで動くツールとしてお渡し)\n・物流向けの簡易ツール(在庫・発注・出荷管理など)\n・Webサイト・LP制作(Claude Code、GitHub+Vercelで公開まで)'},
+    {q:'何を頼めますか?', k:['頼め','できる','できま','できること','依頼','対応','サービス','スキル'], a:'次の3つが中心です。\n・業務の自動化(受注CSV・Excelデータの集計やリスト作成。ブラウザで動くツールとしてお渡し)\n・物流向けの簡易ツール(在庫・発注・出荷管理など)\n・Webサイト・LP制作(Claude Code、GitHub+Vercelで公開まで)'},
     {q:'経歴は?', k:['経歴','経験','バックグラウンド','何年','物流','職歴'], a:'食品容器卸売業の物流部門で11年。営業4年・労務管理13年・ネットショップ運営5年・物流11年で、通算33年の社会人経験があります。'},
-    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。自作アプリなどの制作物は、できたものから Works に追加していきます。'},
+    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。制作物は、出荷リスト自動作成ツール、食品容器卸売店のホームページ(架空のサンプル)、このポートフォリオサイトの3点を Works に掲載しています。'},
     {q:'進め方は?', k:['流れ','進め方','手順','フロー','ステップ'], a:'ヒアリング → ご提案 → 制作・共有 → 検証・納品 の4ステップです。進捗はこまめに共有し、動作確認のうえお渡しして使い方もご説明します。'},
     {q:'AIはどう使う?', k:['ai','claude','クロード','エーアイ','人工知能','チェック','検証'], a:'Claudeを日常的に使っています。AIの出力はそのまま納品せず、必ず動作確認と内容の検証をしてからお渡しします。APIキーなどの情報管理にも注意して進めます。'},
     {q:'料金や納期は?', k:['料金','費用','値段','いくら','見積','予算','納期','期間','いつまで','価格'], a:'料金・納期はご相談内容によって変わるため、このページでは固定でお示ししていません。内容をうかがったうえで、範囲・納期とあわせてご提案します。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>'},
-    {q:'相談するには?', k:['相談','連絡','問い合わせ','問合せ','依頼したい','メッセージ','コンタクト'], a:'クラウドワークスのメッセージからお気軽にどうぞ。「これ、自動化できる?」くらいのご相談で大丈夫です。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>'}
+    {q:'相談するには?', k:['相談','連絡','返信','いつ','問い合わせ','問合せ','依頼したい','メッセージ','コンタクト'], a:'クラウドワークスのメッセージからお気軽にどうぞ。ご連絡は19:00〜22:00の時間帯が中心で、24時間以内にお返事します。「これ、自動化できる?」くらいのご相談で大丈夫です。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>'}
   ];
+  var GAS_KEYS = ['google apps script','gas','スプレッドシート'];
+  var GAS_A = '現在のサンプルは、ブラウザで動くツールとして作っています。Googleスプレッドシートでの自動化をご希望の場合は、内容をうかがったうえで対応できるかお答えします。';
   var FALLBACK = 'すみません、その内容は定型の回答では用意していません。下のボタンから選ぶか、直接ご相談ください。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>';
   var box = document.getElementById('cb'), tg = document.getElementById('cb-toggle'),
       log = document.getElementById('cb-log'), chips = document.getElementById('cb-chips'),
@@ -490,6 +493,7 @@
   function isFollow(t){ return FOLLOW.some(function(w){ return t.indexOf(w) > -1; }); }
   function answer(text){
     var t = text.toLowerCase(), best = null, score = 0, bi = -1;
+    if(GAS_KEYS.some(function(w){ return t.indexOf(w) > -1; })){ add(GAS_A, 'bot'); return; }
     FAQ.forEach(function(f, i){
       var n = 0; f.k.forEach(function(w){ if(t.indexOf(w) > -1) n++; });
       if(n > score){ score = n; best = f; bi = i; }
