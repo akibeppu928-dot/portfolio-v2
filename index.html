@@ -251,7 +251,7 @@
       <p class="sub rv">小さく始めて、確実に動くものをお渡しします。</p>
       <div class="grid g3">
         <article class="card rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><h3>業務の自動化</h3><p>受注CSVやExcelのデータから、集計・転記・リスト作成などの繰り返し作業を自動化します。ブラウザで動くツールとしてお渡しします。</p><a class="link" href="#work-shipping">サンプルを見る →</a></article>
-        <article class="card rv" style="--d:.1s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><h3>物流向け簡易ツール</h3><p>在庫・発注・出荷管理など、現場で使う小規模ツールをヒアリングから設計します。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><h3>物流向け簡易ツール</h3><p>在庫・発注・出荷管理など、現場で使う小規模ツールをヒアリングから設計します。</p><a class="link" href="#work-stock">制作物を見る →</a></article>
         <article class="card rv" style="--d:.2s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><h3>Webサイト・LP制作</h3><p>Claude Codeでランディングページやプロフィールサイトを制作し、GitHub＋Vercelで公開まで対応します。</p><a class="link" href="#work-web">制作物を見る →</a></article>
       </div>
       <article class="card rv" style="margin-top:20px">
@@ -285,6 +285,7 @@
         <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(直前の話題と会話履歴を覚えていて、「それは?」のような続きの質問にも対応します。AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
         <article class="card work rv" style="--d:.2s"><span class="badge">WEB</span><h3>食品容器卸売店のHPサンプル(架空)</h3><p>飲食店向けの食品容器を扱う架空の会社を題材に制作したサンプルです。写真のスライドショー、1文字ずつ浮かび上がるキャッチコピー、スクロールで動くアニメーション、商品の詳細ページ、見積もりボタン、お問い合わせフォーム(入力チェック付き)、スマホ対応を備えています。写真はUnsplashのフリー素材です。Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://sample-hp-youki.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
         <article class="card work rv" id="work-shipping" style="--d:.3s"><span class="badge">TOOL</span><h3>出荷リスト自動作成ツール(サンプル)</h3><p>受注データのCSVを読み込むと、届け先ごとの出荷リストと、商品ごとのピッキングリストを自動で作ります。数量の異常・必須項目の抜け・郵便番号の形式・重複行も先に見つけます。結果はExcelで開けるCSVで保存できます。データはブラウザの中だけで処理し、サーバーには送りません。画面のデータはすべて架空です。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。物流現場の出荷準備を題材に、Claude Codeで制作しました。</p><a class="link" href="https://shipping-list-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
+        <article class="card work rv" id="work-stock" style="--d:.4s"><span class="badge">TOOL</span><h3>在庫・発注・出荷管理ツール(サンプル)</h3><p>出荷予定を入れると在庫を引き当て、引当後の在庫が発注点を下回った商品には発注数量を提案します。発注した分は入庫で在庫に加算、出荷確定で在庫が減り、履歴に残ります。在庫が足りない出荷は登録できません。データはブラウザの中だけに保存し、サーバーには送りません。画面のデータはすべて架空です。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。物流現場の在庫管理を題材に、Claude Codeで制作しました。</p><a class="link" href="https://stock-order-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
       </div>
     </div>
   </section>
@@ -469,7 +470,7 @@
   var FAQ = [
     {q:'何を頼めますか?', k:['頼め','できる','できま','できること','依頼','対応','サービス','スキル'], a:'次の3つが中心です。\n・業務の自動化(受注CSV・Excelデータの集計やリスト作成。ブラウザで動くツールとしてお渡し)\n・物流向けの簡易ツール(在庫・発注・出荷管理など)\n・Webサイト・LP制作(Claude Code、GitHub+Vercelで公開まで)'},
     {q:'経歴は?', k:['経歴','経験','バックグラウンド','何年','物流','職歴'], a:'食品容器卸売業の物流部門で11年。営業4年・労務管理13年・ネットショップ運営5年・物流11年で、通算33年の社会人経験があります。'},
-    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。制作物は、出荷リスト自動作成ツール、食品容器卸売店のホームページ(架空のサンプル)、このポートフォリオサイトの3点を Works に掲載しています。'},
+    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。制作物は、出荷リスト自動作成ツール、在庫・発注・出荷管理ツール、食品容器卸売店のホームページ(架空のサンプル)、このポートフォリオサイトの4点を Works に掲載しています。'},
     {q:'進め方は?', k:['流れ','進め方','手順','フロー','ステップ'], a:'ヒアリング → ご提案 → 制作・共有 → 検証・納品 の4ステップです。まず簡単な動くサンプルを24時間以内にお見せし、ご確認いただきながら進めます(内容によってはお時間をいただくこともあります)。進捗はこまめに共有し、動作確認のうえお渡しして使い方もご説明します。'},
     {q:'AIはどう使う?', k:['ai','claude','クロード','エーアイ','人工知能','チェック','検証'], a:'Claudeを日常的に使っています。AIの出力はそのまま納品せず、必ず動作確認と内容の検証をしてからお渡しします。APIキーなどの情報管理にも注意して進めます。'},
     {q:'料金や納期は?', k:['料金','費用','値段','いくら','見積','予算','納期','期間','いつまで','価格'], a:'料金・納期はご相談内容によって変わるため、このページでは固定でお示ししていません。内容をうかがったうえで、範囲・納期とあわせてご提案します。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>'},
