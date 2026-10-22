@@ -194,6 +194,16 @@
   #cb-form button{width:44px;height:44px;border-radius:50%;border:0;background:var(--green);color:#06241a;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
   @media(max-width:520px){#cb{right:16px;bottom:84px;height:calc(100vh - 110px)}.hero h1{font-size:min(32px,7.6vw)}}
   @media(max-width:860px){footer{padding-bottom:96px}}
+  /* works: thumbnails + case lines */
+  .work .thumb{display:block;width:calc(100% + 56px);height:auto;max-width:none;margin:-30px -28px 20px;aspect-ratio:16/9;object-fit:cover;object-position:top;border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .work .badge{margin-bottom:10px}
+  .case{list-style:none;display:grid;gap:8px;margin:0 0 12px}
+  .case li{font-size:14px;color:var(--text-soft);line-height:1.75}
+  .case li b{display:block;font-size:12px;letter-spacing:.12em;color:var(--gold);margin-bottom:1px}
+  .work .tools{font-size:12.5px;color:var(--text-soft);opacity:.85;margin-bottom:6px}
+  .chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:-20px 0 32px}
+  .chips li{font-family:'Inter','Zen Kaku Gothic New',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--gold-strong);border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:rgba(19,42,32,.6)}
+  .ph{display:inline-block}
 </style>
 </head>
 <body class="no-js">
@@ -244,7 +254,7 @@
   <section id="about">
     <div class="wrap">
       <div class="eyebrow rv">01 — ABOUT</div>
-      <h2 class="title rv">現場を知る人間が、AIで作る。</h2>
+      <h2 class="title rv"><span class="ph">現場を知る人間が、</span><span class="ph">AIで作る。</span></h2>
       <p class="sub rv">食品容器卸売業の物流部門で11年。日々の業務の中で感じてきた「ここ、自動化できたら…」を、AI駆動開発で形にしています。</p>
 
       <div class="stats rv">
@@ -255,10 +265,10 @@
       </div>
 
       <div class="grid g2" style="margin-top:22px">
-        <article class="card rv"><span class="num">01</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4v15z"/><path d="M2 20h20"/><path d="M8 17h2M14 17h2"/></svg></span><h3>物流現場を11年知っている</h3><p>「何が面倒で、どこでミスが起きるか」を現場目線で理解。机上の空論ではない提案ができます。</p></article>
-        <article class="card rv" style="--d:.1s"><span class="num">02</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><h3>非エンジニアにも伝わる言葉</h3><p>専門用語を並べず、「何ができて、どう楽になるのか」を中心にご説明します。</p></article>
+        <article class="card rv"><span class="num">01</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20V9l6 4V9l6 4V5h4v15z"/><path d="M2 20h20"/><path d="M8 17h2M14 17h2"/></svg></span><h3><span class="ph">物流現場を</span><span class="ph">11年知っている</span></h3><p>「何が面倒で、どこでミスが起きるか」を現場目線で理解。机上の空論ではない提案ができます。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="num">02</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><h3><span class="ph">非エンジニアにも</span><span class="ph">伝わる言葉</span></h3><p>専門用語を並べず、「何ができて、どう楽になるのか」を中心にご説明します。</p></article>
         <article class="card rv"><span class="num">03</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span><h3>33年のビジネス経験</h3><p>営業4年・労務管理13年・ネットショップ運営5年・物流11年。ビジネス全体の流れを踏まえて相談に乗れます。</p></article>
-        <article class="card rv" style="--d:.1s"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><h3>早く動くものをお見せします</h3><p>ご相談内容に合わせた簡単な動くサンプルを、原則24時間以内にお見せします(内容によってはお時間をいただくことがあります)。契約15件・評価5.0(全項目満点)、ご連絡には24時間以内にお返事し、進捗もこまめに共有します。</p></article>
+        <article class="card rv" style="--d:.1s"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><h3><span class="ph">早く動くものを</span><span class="ph">お見せします</span></h3><p>ご相談内容に合わせた簡単な動くサンプルを、原則24時間以内にお見せします(内容によってはお時間をいただくことがあります)。契約15件・評価5.0(全項目満点)、ご連絡には24時間以内にお返事し、進捗もこまめに共有します。</p></article>
       </div>
     </div>
   </section>
@@ -268,10 +278,11 @@
       <div class="eyebrow rv">02 — SKILLS</div>
       <h2 class="title rv">できること。</h2>
       <p class="sub rv">小さく始めて、確実に動くものをお渡しします。</p>
+      <ul class="chips rv" aria-label="使っている道具"><li>Claude Code</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GitHub</li><li>Vercel</li></ul>
       <div class="grid g3">
         <article class="card rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></span><h3>業務の自動化</h3><p>受注CSV(Excelから保存したものも可)から、集計・転記・リスト作成などの繰り返し作業を自動化します。ブラウザで動くツールとしてお渡しします。</p><a class="link" href="#work-shipping">サンプルを見る →</a></article>
-        <article class="card rv" style="--d:.1s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><h3>物流向け簡易ツール</h3><p>在庫・発注・出荷管理など、現場で使う小規模ツールをヒアリングから設計します。</p><a class="link" href="#work-stock">制作物を見る →</a></article>
-        <article class="card rv" style="--d:.2s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><h3>Webサイト・LP制作</h3><p>Claude Codeでランディングページやプロフィールサイトを制作し、GitHub＋Vercelで公開まで対応します。</p><a class="link" href="#work-web">制作物を見る →</a></article>
+        <article class="card rv" style="--d:.1s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><h3><span class="ph">物流向け</span><span class="ph">簡易ツール</span></h3><p>在庫・発注・出荷管理など、現場で使う小規模ツールをヒアリングから設計します。</p><a class="link" href="#work-stock">制作物を見る →</a></article>
+        <article class="card rv" style="--d:.2s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><h3><span class="ph">Webサイト・</span><span class="ph">LP制作</span></h3><p>Claude Codeでランディングページやプロフィールサイトを制作し、GitHub＋Vercelで公開まで対応します。</p><a class="link" href="#work-web">制作物を見る →</a></article>
       </div>
       <article class="card rv" style="margin-top:20px">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>AIの使い方</h3>
@@ -298,14 +309,14 @@
     <div class="wrap">
       <div class="eyebrow rv">04 — WORKS</div>
       <h2 class="title rv">制作物。</h2>
-      <p class="sub rv">実際に触って確認できる制作物です。新しいものができしだい追加していきます。</p>
+      <p class="sub rv">実際に触って確認できる制作物です。このサイト以外は、すべて架空のデータ・店舗を題材にしたサンプルです。新しいものができしだい追加していきます。</p>
       <div class="grid g2">
-        <article class="card work rv" id="work-web"><span class="badge">WEB</span><h3>このポートフォリオサイト</h3><p>Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
-        <article class="card work rv" style="--d:.1s"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><p>このサイトの右下で動いています。経歴・できること・進め方などの質問に、定型の回答で答えるFAQ型です(直前の話題と会話履歴を覚えていて、「それは?」のような続きの質問にも対応します。AIではなく、サイトに書いた内容だけを返します)。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
-        <article class="card work rv" style="--d:.2s"><span class="badge">WEB</span><h3>食品容器卸売店のHPサンプル(架空)</h3><p>飲食店向けの食品容器を扱う架空の会社を題材に制作したサンプルです。写真のスライドショー、1文字ずつ浮かび上がるキャッチコピー、スクロールで動くアニメーション、商品の詳細ページ、見積もりボタン、お問い合わせフォーム(入力チェック付き)、スマホ対応を備えています。写真はUnsplashのフリー素材です。Claude Codeで制作し、Vercelで公開しています。</p><a class="link" href="https://sample-hp-youki.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
-        <article class="card work rv" id="work-shipping" style="--d:.3s"><span class="badge">TOOL</span><h3>出荷リスト自動作成ツール(サンプル)</h3><p>受注データのCSVを読み込むと、届け先ごとの出荷リストと、商品ごとのピッキングリストを自動で作ります。数量の異常・必須項目の抜け・郵便番号の形式・重複行も先に見つけます。結果はExcelで開けるCSVで保存できます。データはブラウザの中だけで処理し、サーバーには送りません。画面のデータはすべて架空です。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。物流現場の出荷準備を題材に、Claude Codeで制作しました。</p><a class="link" href="https://shipping-list-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
-        <article class="card work rv" id="work-stock" style="--d:.4s"><span class="badge">TOOL</span><h3>在庫・発注・出荷管理ツール(サンプル)</h3><p>出荷予定を入れると在庫を引き当て、1日の出荷量と入庫までの日数から発注点を計算し、下回った商品には発注数量を提案します。「あと何日で欠品するか」も出し、発注しても入庫が間に合わない商品は警告します。発注した分は入庫で在庫に加算、出荷確定で在庫が減り、履歴に残ります。在庫が足りない出荷は登録できません。データはブラウザの中だけに保存し、サーバーには送りません。画面のデータはすべて架空です。HTML・CSS・JavaScriptのみで、APIキーや外部サービスは使っていません。物流現場の在庫管理を題材に、Claude Codeで制作しました。</p><a class="link" href="https://stock-order-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
-        <article class="card work rv" id="work-lp" style="--d:.5s"><span class="badge">LP</span><h3>整体院のランディングページ(サンプル・架空)</h3><p>実在しない整体院を題材に制作した、1ページ完結のLPサンプルです。お悩み、選ばれる理由、施術の流れ、料金、お客様の声(架空)、よくある質問、予約フォームまでを1ページにまとめました。予約フォームは入力チェック付きですが、送信してもデータはどこにも送られません。スマホでは予約ボタンを画面下に固定しています。写真はUnsplashのフリー素材です(出典はページ下部に記載)。HTML・CSS・JavaScriptのみで、Claude Codeで制作しました。</p><a class="link" href="https://lp-sample-seitai.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
+        <article class="card work rv" id="work-shipping" style="--d:0s"><img class="thumb" src="works/shipping.jpg" alt="出荷リスト自動作成ツールの画面" width="960" height="540" loading="lazy"><span class="badge">TOOL</span><h3><span class="ph">出荷リスト</span><span class="ph">自動作成ツール</span><span class="ph">(サンプル)</span></h3><ul class="case"><li><b>作ったもの</b>受注CSVを読み込むと、届け先ごとの出荷リストと、商品ごとのピッキングリストを自動で作ります。</li><li><b>工夫した点</b>数量の異常・必須項目の抜け・郵便番号の形式・重複行を先に見つけます。結果はExcelで開けるCSVで保存できます。</li><li><b>安心して使える点</b>データはブラウザの中だけで処理し、サーバーには送りません。画面のデータはすべて架空です。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript / Claude Code(APIキーや外部サービスは使っていません)</p><a class="link" href="https://shipping-list-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
+        <article class="card work rv" id="work-stock" style="--d:.1s"><img class="thumb" src="works/stock.jpg" alt="在庫・発注・出荷管理ツールの画面" width="960" height="540" loading="lazy"><span class="badge">TOOL</span><h3><span class="ph">在庫・発注・</span><span class="ph">出荷管理ツール</span><span class="ph">(サンプル)</span></h3><ul class="case"><li><b>作ったもの</b>出荷予定を入れると在庫を引き当て、1日の出荷量と入庫までの日数から発注点を計算し、下回った商品に発注数量を提案します。</li><li><b>工夫した点</b>「あと何日で欠品するか」を出し、発注しても入庫が間に合わない商品は警告します。在庫が足りない出荷は登録できません。履歴にも残ります。</li><li><b>安心して使える点</b>データはブラウザの中だけに保存し、サーバーには送りません。画面のデータはすべて架空です。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript / Claude Code(APIキーや外部サービスは使っていません)</p><a class="link" href="https://stock-order-tool.vercel.app" target="_blank" rel="noopener">試してみる →</a></article>
+        <article class="card work rv" id="work-web" style="--d:.2s"><img class="thumb" src="works/minato.jpg" alt="MINATO PACKのホームページの画面" width="960" height="540" loading="lazy"><span class="badge">WEB</span><h3><span class="ph">食品容器卸売店の</span><span class="ph">HPサンプル</span><span class="ph">「MINATO PACK」</span><span class="ph">(架空)</span></h3><ul class="case"><li><b>作ったもの</b>架空の食品容器卸売店を題材にした、ホームページのサンプルです。</li><li><b>工夫した点</b>写真のスライドショー、1文字ずつ浮かび上がるキャッチコピー、スクロールで動くアニメーション、商品ラインナップ、お知らせ、商品をカートに入れて購入手続きまで試せる画面(実際の決済は行われません)、入力チェック付きのお問い合わせフォーム、スマホ用メニューを備えています。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript / Claude Code / 写真はUnsplashのフリー素材(出典はページ下部に記載)</p><a class="link" href="https://sample-hp-youki.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
+        <article class="card work rv" id="work-lp" style="--d:.3s"><img class="thumb" src="works/lp.jpg" alt="整体院ひだまりのLPの画面" width="960" height="540" loading="lazy"><span class="badge">LP</span><h3><span class="ph">整体院の</span><span class="ph">ランディングページ</span><span class="ph">(サンプル・架空)</span></h3><ul class="case"><li><b>作ったもの</b>実在しない整体院「整体院 ひだまり」を題材にした、1ページ完結のLPサンプルです。</li><li><b>工夫した点</b>お悩み、選ばれる理由、施術の流れ、料金、お客様の声(架空)、院長紹介、アクセス・営業時間、お知らせ、よくある質問、予約フォームを1ページにまとめました。予約フォームは入力チェックと確認表示まで動きますが、送信してもデータはどこにも送られません。スマホでは予約ボタンを画面下に固定しています。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript / Claude Code / 写真はUnsplashのフリー素材(出典はページ下部に記載)</p><a class="link" href="https://lp-sample-seitai.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
+        <article class="card work rv" style="--d:.4s"><img class="thumb" src="works/chatbot.jpg" alt="ポートフォリオの右下で動く質問ボットの画面" width="960" height="540" loading="lazy"><span class="badge">CHATBOT</span><h3>よくある質問ボット</h3><ul class="case"><li><b>作ったもの</b>このサイトの右下で動いている、経歴・できること・進め方などの質問に答えるFAQ型のボットです。</li><li><b>工夫した点</b>直前の話題と会話履歴を覚えていて、「それは?」のような続きの質問にも対応します。AIではなく、サイトに書いた内容だけを返します。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript(APIキーや外部サービスは使っていません)</p><a class="link" href="#cb-toggle" id="open-cb">試してみる →</a></article>
+        <article class="card work rv" style="--d:.5s"><img class="thumb" src="works/portfolio.jpg" alt="このポートフォリオサイトの画面" width="960" height="540" loading="lazy"><span class="badge">WEB</span><h3><span class="ph">このポートフォリオ</span><span class="ph">サイト</span></h3><ul class="case"><li><b>作ったもの</b>物流の経験とClaude Codeでできることをまとめた、自己紹介サイトです。</li></ul><p class="tools">使ったもの: HTML・CSS・JavaScript / Claude Code / GitHub / Vercel</p><a class="link" href="https://portfolio-v2-one-mocha.vercel.app" target="_blank" rel="noopener">公開サイトを見る →</a></article>
       </div>
     </div>
   </section>
@@ -313,7 +324,7 @@
   <section class="cta" id="contact">
     <div class="wrap">
       <div class="eyebrow rv">05 — CONTACT</div>
-      <h2 class="title rv">まずは、お困りごとを<br>聞かせてください。</h2>
+      <h2 class="title rv"><span class="ph">まずは、</span><span class="ph">お困りごとを</span><br><span class="ph">聞かせてください。</span></h2>
       <p class="sub rv">「これ、自動化できる？」くらいのご相談で大丈夫です。クラウドワークスのメッセージからお気軽にどうぞ。</p>
       <div class="btns rv">
         <a class="btn primary" href="https://crowdworks.jp/public/employees/6892842" target="_blank" rel="noopener">クラウドワークスで相談する →</a>
@@ -502,7 +513,7 @@
   var FAQ = [
     {q:'何を頼めますか?', k:['頼め','できる','できま','できること','依頼','対応','サービス','スキル'], a:'次の3つが中心です。\n・業務の自動化(受注CSV(Excelから保存したものも可)の集計やリスト作成。ブラウザで動くツールとしてお渡し)\n・物流向けの簡易ツール(在庫・発注・出荷管理など)\n・Webサイト・LP制作(Claude Code、GitHub+Vercelで公開まで)'},
     {q:'経歴は?', k:['経歴','経験','バックグラウンド','何年','物流','職歴'], a:'食品容器卸売業の物流部門で11年。営業4年・労務管理13年・ネットショップ運営5年・物流11年で、通算33年の社会人経験があります。'},
-    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。制作物は、出荷リスト自動作成ツール、在庫・発注・出荷管理ツール、食品容器卸売店のホームページ(架空のサンプル)、整体院のランディングページ(架空のサンプル)、このポートフォリオサイトの5点を Works に掲載しています。'},
+    {q:'実績は?', k:['実績','作品','制作物','ポートフォリオ','事例','評価','契約'], a:'クラウドワークスで契約15件、評価5.0(全項目満点)です。制作物は、出荷リスト自動作成ツール、在庫・発注・出荷管理ツール、食品容器卸売店のホームページ「MINATO PACK」(架空のサンプル)、整体院のランディングページ(架空のサンプル)、よくある質問ボット、このポートフォリオサイトの6点を Works に掲載しています。'},
     {q:'進め方は?', k:['流れ','進め方','手順','フロー','ステップ'], a:'ヒアリング → ご提案 → 制作・共有 → 検証・納品 の4ステップです。まず簡単な動くサンプルを24時間以内にお見せし、ご確認いただきながら進めます(内容によってはお時間をいただくこともあります)。進捗はこまめに共有し、動作確認のうえお渡しして使い方もご説明します。'},
     {q:'AIはどう使う?', k:['ai','claude','クロード','エーアイ','人工知能','チェック','検証'], a:'Claudeを日常的に使っています。AIの出力はそのまま納品せず、必ず動作確認と内容の検証をしてからお渡しします。APIキーなどの情報管理にも注意して進めます。'},
     {q:'料金や納期は?', k:['料金','費用','値段','いくら','見積','予算','納期','期間','いつまで','価格'], a:'料金・納期はご相談内容によって変わるため、このページでは固定でお示ししていません。内容をうかがったうえで、範囲・納期とあわせてご提案します。\n<a href="'+CW+'" target="_blank" rel="noopener">クラウドワークスで相談する</a>'},
